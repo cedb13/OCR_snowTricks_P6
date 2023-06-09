@@ -12,36 +12,28 @@ class Comment
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
-
-    #[ORM\Column]
-    private ?int $idComment = null;
+    private ?int $id;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $contentComment = null;
+    private ?string $contentComment;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $datePublication = null;
+    private ?\DateTimeInterface $datePublication;
 
     #[ORM\Column]
-    private ?int $user_idUser = null;
+    private ?int $userId;
 
     #[ORM\Column]
-    private ?int $tric_idTrick = null;
+    private ?int $trickId;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdComment(): ?int
+    public function setId(int $id): self
     {
-        return $this->idComment;
-    }
-
-    public function setIdComment(int $idComment): self
-    {
-        $this->idComment = $idComment;
+        $this->id = $id;
 
         return $this;
     }
@@ -70,26 +62,26 @@ class Comment
         return $this;
     }
 
-    public function getUserIdUser(): ?int
+    public function getUserId(): ?int
     {
-        return $this->user_idUser;
+        return $this->userId;
     }
 
-    public function setUserIdUser(int $user_idUser): self
+    public function setUserIdUser(int $userId): self
     {
-        $this->user_idUser = $user_idUser;
+        $this->userId = $userId;
 
         return $this;
     }
 
-    public function getTricIdTrick(): ?int
+    public function getTrickId(): ?int
     {
-        return $this->tric_idTrick;
+        return $this->trickId;
     }
 
-    public function setTricIdTrick(int $tric_idTrick): self
+    public function setTricIdTrick(int $trickId): self
     {
-        $this->tric_idTrick = $tric_idTrick;
+        $this->trickId = $trickId;
 
         return $this;
     }

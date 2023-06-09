@@ -12,29 +12,33 @@ class User
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private ?int $id;
 
     #[ORM\Column(length: 255)]
-    private ?string $userName = null;
+    private ?string $userName;
 
     #[ORM\Column(length: 255)]
-    private ?string $email = null;
+    private ?string $email;
 
     #[ORM\Column(length: 255)]
-    private ?string $password = null;
-
-    #[ORM\Column]
-    private ?int $idUser = null;
+    private ?string $password;
 
     #[ORM\Column(length: 1000)]
-    private ?string $userPhoto = null;
+    private ?string $userLinkPhoto;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getUserName(): ?string
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
+    public function getuserName(): ?string
     {
         return $this->userName;
     }
@@ -70,26 +74,14 @@ class User
         return $this;
     }
 
-    public function getIdUser(): ?int
+    public function getUserLinkPhoto(): ?string
     {
-        return $this->idUser;
+        return $this->userLinkPhoto;
     }
 
-    public function setIdUser(int $idUser): self
+    public function setUserLinkPhoto(string $userLinkPhoto): self
     {
-        $this->idUser = $idUser;
-
-        return $this;
-    }
-
-    public function getUserPhoto(): ?string
-    {
-        return $this->userPhoto;
-    }
-
-    public function setUserPhoto(string $userPhoto): self
-    {
-        $this->userPhoto = $userPhoto;
+        $this->userLinkPhoto = $userLinkPhoto;
 
         return $this;
     }

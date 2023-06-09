@@ -12,28 +12,25 @@ class Trick
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
-
-    #[ORM\Column]
-    private ?int $idTrick = null;
+    private ?int $id;
 
     #[ORM\Column(length: 510)]
-    private ?string $nameTrick = null;
+    private ?string $name;
 
     #[ORM\Column(length: 510)]
-    private ?string $slug = null;
+    private ?string $slug;
+
+    #[ORM\Column(length: 510)]
+    private ?string $group;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $contentTrick = null;
+    private ?string $content;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $creationDate = null;
+    private ?\DateTimeInterface $creationDate;
 
     #[ORM\Column]
-    private ?int $user_idUser = null;
-
-    #[ORM\Column]
-    private ?int $group_idGroup = null;
+    private ?int $idUser;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $modificationDate = null;
@@ -43,26 +40,21 @@ class Trick
         return $this->id;
     }
 
-    public function getIdTrick(): ?int
+    public function setId(int $id): self
     {
-        return $this->idTrick;
-    }
-
-    public function setIdTrick(int $idTrick): self
-    {
-        $this->idTrick = $idTrick;
+        $this->id = $id;
 
         return $this;
     }
 
-    public function getNameTrick(): ?string
+    public function getName(): ?string
     {
-        return $this->nameTrick;
+        return $this->name;
     }
 
-    public function setNameTrick(string $nameTrick): self
+    public function setName(string $name): self
     {
-        $this->nameTrick = $nameTrick;
+        $this->name = $name;
 
         return $this;
     }
@@ -79,14 +71,26 @@ class Trick
         return $this;
     }
 
-    public function getContentTrick(): ?string
+    public function getGroup(): ?string
     {
-        return $this->contentTrick;
+        return $this->group;
     }
 
-    public function setContentTrick(string $contentTrick): self
+    public function setGroup(string $group): self
     {
-        $this->contentTrick = $contentTrick;
+        $this->group = $group;
+
+        return $this;
+    }
+
+    public function getContent(): ?string
+    {
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }
@@ -103,26 +107,14 @@ class Trick
         return $this;
     }
 
-    public function getUserIdUser(): ?int
+    public function getIdUser(): ?int
     {
-        return $this->user_idUser;
+        return $this->idUser;
     }
 
-    public function setUserIdUser(int $user_idUser): self
+    public function setIdUser(int $idUser): self
     {
-        $this->user_idUser = $user_idUser;
-
-        return $this;
-    }
-
-    public function getGroupIdGroup(): ?int
-    {
-        return $this->group_idGroup;
-    }
-
-    public function setGroupIdGroup(int $group_idGroup): self
-    {
-        $this->group_idGroup = $group_idGroup;
+        $this->idUser = $idUser;
 
         return $this;
     }
