@@ -4,13 +4,16 @@ namespace App\Entity;
 
 use App\Repository\MediaRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\DBAL\Types\Types;
 
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
 class Media
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id;
 
     #[ORM\Column(length: 255)]
@@ -23,18 +26,13 @@ class Media
     private ?string $type;
 
     #[ORM\Column]
-    private ?int $idTrick;
+    #[ManyToOne(targetEntity: Trick::class)]
+    #[JoinColumn(name: 'trick_id', referencedColumnName: 'id')]
+    private $trick;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): self
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getTitle(): ?string
@@ -73,14 +71,14 @@ class Media
         return $this;
     }
 
-    public function getIdTrick(): ?int
+    public function getTrick(): ?Trick
     {
-        return $this->idTrick;
+        return $this->trick;
     }
 
-    public function setIdTrick(int $idTrick): self
+    public function setTrick(?Trick $trick): self
     {
-        $this->idTrick = $idTrick;
+        $this->trick = $trick;
 
         return $this;
     }

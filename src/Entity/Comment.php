@@ -5,83 +5,82 @@ namespace App\Entity;
 use App\Repository\CommentRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 #[ORM\Entity(repositoryClass: CommentRepository::class)]
 class Comment
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id;
 
     #[ORM\Column(type: Types::TEXT)]
-    private ?string $contentComment;
+    private ?string $content;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $datePublication;
+    private ?\DateTimeInterface $createdAt;
 
     #[ORM\Column]
-    private ?int $userId;
+    #[ManyToOne(targetEntity: User::class)]
+    #[JoinColumn(name: 'user_id', referencedColumnName: 'id')]
+    private $user;
 
     #[ORM\Column]
-    private ?int $trickId;
+    #[ManyToOne(targetEntity: Trick::class)]
+    #[JoinColumn(name: 'trick_id', referencedColumnName: 'id')]
+    private $trick;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setId(int $id): self
+    public function getContent(): ?string
     {
-        $this->id = $id;
+        return $this->content;
+    }
+
+    public function setContent(string $content): self
+    {
+        $this->content = $content;
 
         return $this;
     }
 
-    public function getContentComment(): ?string
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->contentComment;
+        return $this->createdAt;
     }
 
-    public function setContentComment(string $contentComment): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->contentComment = $contentComment;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getDatePublication(): ?\DateTimeInterface
+    public function getUser(): ?User
     {
-        return $this->datePublication;
+        return $this->user;
     }
 
-    public function setDatePublication(\DateTimeInterface $datePublication): self
+    public function setUser(?User $user): self
     {
-        $this->datePublication = $datePublication;
+        $this->user = $user;
 
         return $this;
     }
 
-    public function getUserId(): ?int
+    public function getTrick(): ?Trick
     {
-        return $this->userId;
+        return $this->trick;
     }
 
-    public function setUserIdUser(int $userId): self
+    public function setTrick(?Trick $trick): self
     {
-        $this->userId = $userId;
-
-        return $this;
-    }
-
-    public function getTrickId(): ?int
-    {
-        return $this->trickId;
-    }
-
-    public function setTricIdTrick(int $trickId): self
-    {
-        $this->trickId = $trickId;
+        $this->trick = $trick;
 
         return $this;
     }

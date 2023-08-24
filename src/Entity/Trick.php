@@ -5,16 +5,20 @@ namespace App\Entity;
 use App\Repository\TrickRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\ORM\Mapping\ManyToOne;
+use Doctrine\ORM\Mapping\JoinColumn;
 
 #[ORM\Entity(repositoryClass: TrickRepository::class)]
 class Trick
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column(type: Types::INTEGER)]
     private ?int $id;
 
-    #[ORM\Column(length: 510)]
+    #[ORM\Column(type: 'string', length: 510, unique: true)]
+    #[Assert\Regex(pattern: "#^[-'a-zA-ZÀ-ÖØ-öø-ÿ0-9\(\) ]+$#", message: "Trick name must only contain letters, numbers and accented letters")]
     private ?string $name;
 
     #[ORM\Column(length: 510)]
@@ -27,24 +31,19 @@ class Trick
     private ?string $content;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    private ?\DateTimeInterface $creationDate;
-
-    #[ORM\Column]
-    private ?int $idUser;
+    private ?\DateTimeInterface $createdAt;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    private ?\DateTimeInterface $modificationDate = null;
+    private ?\DateTimeInterface $updatedAt = null;
+
+    #[ORM\Column(name: 'id_user')]
+    #[ManyToOne(targetEntity: User::class)]
+    #[JoinColumn(name: 'id_user', referencedColumnName: 'id')]
+    private $user;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function setId(int $id): self
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     public function getName(): ?string
@@ -52,7 +51,7 @@ class Trick
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(?string $name): self
     {
         $this->name = $name;
 
@@ -76,7 +75,7 @@ class Trick
         return $this->group;
     }
 
-    public function setGroup(string $group): self
+    public function setGroup(?string $group): self
     {
         $this->group = $group;
 
@@ -88,45 +87,46 @@ class Trick
         return $this->content;
     }
 
-    public function setContent(string $content): self
+    public function setContent(?string $content): self
     {
         $this->content = $content;
 
         return $this;
     }
 
-    public function getCreationDate(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->creationDate;
+        return $this->createdAt;
     }
 
-    public function setCreationDate(\DateTimeInterface $creationDate): self
+    public function setCreatedAt(?\DateTimeInterface $createdAt): self
     {
-        $this->creationDate = $creationDate;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getIdUser(): ?int
+
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->idUser;
+        return $this->updatedAt;
     }
 
-    public function setIdUser(int $idUser): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->idUser = $idUser;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
 
-    public function getModificationDate(): ?\DateTimeInterface
+    public function getUser(): ?User
     {
-        return $this->modificationDate;
+        return $this->user;
     }
 
-    public function setModificationDate(?\DateTimeInterface $modificationDate): self
+    public function setUser(?User $user): self
     {
-        $this->modificationDate = $modificationDate;
+        $this->user = $user;
 
         return $this;
     }
