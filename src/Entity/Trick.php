@@ -25,15 +25,15 @@ class Trick
     private ?string $slug;
 
     #[ORM\Column(length: 510)]
-    private ?string $group;
+    private ?string $category;
 
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: 'datetime')]
     private ?\DateTimeInterface $createdAt;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
     #[ORM\Column(name: 'id_user')]
@@ -70,14 +70,14 @@ class Trick
         return $this;
     }
 
-    public function getGroup(): ?string
+    public function getCategory(): ?string
     {
-        return $this->group;
+        return $this->category;
     }
 
-    public function setGroup(?string $group): self
+    public function setcategory(?string $category): self
     {
-        $this->group = $group;
+        $this->category = $category;
 
         return $this;
     }

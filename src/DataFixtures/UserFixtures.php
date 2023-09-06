@@ -17,6 +17,7 @@ class UserFixtures extends Fixture
     }
     public function load(ObjectManager $manager): void
     {
+        $roles[] = 'ROLE_ADMIN';
         for ($i=0; $i<8; $i++)
         {
             $user = new User();
@@ -25,11 +26,10 @@ class UserFixtures extends Fixture
             $user->setUserName($userName);
             $email = $userName.'@exemple.com';
             $user->setEmail($email);
-            $roles[] = 'ROLE_ADMIN';
             $user->setRoles($roles);
             $password = $this->hasher->hashPassword($user, '@Test123#'. $i);
             $user->setPassword($password);
-            $avatarFile = '/var/www/html/OCR_snowTricks_P6/public/images/avatars/avatar-'.$userName.'png';
+            $avatarFile = '/images/avatars/avatar-'.$userName.'png';
             $user->setUserLinkPhoto($avatarFile);
 
             $manager->persist($user);
