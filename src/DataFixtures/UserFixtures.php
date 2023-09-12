@@ -18,25 +18,36 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $roles[] = 'ROLE_ADMIN';
-        for ($i=0; $i<8; $i++)
+        for ($i=1; $i<8; $i++)
         {
             $user = new User();
-        
+
             $userName = 'userName' . $i;
-            $user->setUserName($userName);
             $email = $userName.'@exemple.com';
-            $user->setEmail($email);
-            $user->setRoles($roles);
             $password = $this->hasher->hashPassword($user, '@Test123#'. $i);
-            $user->setPassword($password);
             $avatarFile = '/images/avatars/avatar-'.$userName.'png';
-            $user->setUserLinkPhoto($avatarFile);
+            
+            $user
+                ->setUserName($userName)
+                ->setEmail($email)
+                ->setRoles($roles)
+                ->setPassword($password)
+                ->setUserLinkPhoto($avatarFile);
 
-            $manager->persist($user);
+                $manager->persist($user);
+                $this->addReference($i, $user);
 
-            $this->addReference($i, $user);
+            
+
+            
+            //dd($this->getReference('user'.$i, $user));
         }
 
         $manager->flush();
+    }
+
+    public function getOrder() 
+    {
+        return 0; // Load before tricks
     }
 }

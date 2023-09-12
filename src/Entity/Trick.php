@@ -8,6 +8,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 
 #[ORM\Entity(repositoryClass: TrickRepository::class)]
 class Trick
@@ -36,10 +38,17 @@ class Trick
     #[ORM\Column(type: 'datetime', nullable: true)]
     private ?\DateTimeInterface $updatedAt = null;
 
-    #[ORM\Column(name: 'id_user')]
-    #[ManyToOne(targetEntity: User::class)]
-    #[JoinColumn(name: 'id_user', referencedColumnName: 'id')]
-    private $user;
+    #[ManyToOne(targetEntity: User::class, inversedBy: 'tricks')]
+    #[JoinColumn(name: 'id_user')]
+    private User $user;
+
+    #[ORM\OneToMany(targetEntity: Media::class, mappedBy: 'trick', orphanRemoval: true)]
+    private Collection $medias;
+
+    public function __construct()
+    {
+        $this->medias = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -129,5 +138,13 @@ class Trick
         $this->user = $user;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, Media>
+     */
+    public function getMedias(): Collection
+    {
+        return $this->medias;
     }
 }

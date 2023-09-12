@@ -22,12 +22,12 @@ class Comment
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $createdAt;
 
-    #[ORM\Column]
+    #[ORM\Column(name: 'user_id')]
     #[ManyToOne(targetEntity: User::class)]
     #[JoinColumn(name: 'user_id', referencedColumnName: 'id')]
     private $user;
 
-    #[ORM\Column]
+    #[ORM\Column(name: 'trick_id')]
     #[ManyToOne(targetEntity: Trick::class)]
     #[JoinColumn(name: 'trick_id', referencedColumnName: 'id')]
     private $trick;

@@ -25,9 +25,8 @@ class Media
     #[ORM\Column(length: 45)]
     private ?string $type;
 
-    #[ORM\Column]
-    #[ManyToOne(targetEntity: Trick::class)]
-    #[JoinColumn(name: 'trick_id', referencedColumnName: 'id')]
+    #[ManyToOne(targetEntity: Trick::class, inversedBy: 'medias')]
+    #[JoinColumn(name: 'id_trick')]
     private $trick;
 
     public function getId(): ?int
