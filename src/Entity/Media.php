@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\ManyToOne;
 use Doctrine\ORM\Mapping\JoinColumn;
 use Doctrine\DBAL\Types\Types;
+use PhpParser\Node\Expr\Cast\Bool_;
 
 #[ORM\Entity(repositoryClass: MediaRepository::class)]
 class Media
@@ -24,6 +25,9 @@ class Media
 
     #[ORM\Column(length: 45)]
     private ?string $type;
+
+    #[ORM\Column(type: Types::BOOLEAN)]
+    private ?bool $defaultImage = false;
 
     #[ManyToOne(targetEntity: Trick::class, inversedBy: 'medias')]
     #[JoinColumn(name: 'id_trick')]
@@ -78,6 +82,18 @@ class Media
     public function setTrick(?Trick $trick): self
     {
         $this->trick = $trick;
+
+        return $this;
+    }
+
+    public function getDefaultImage(): ?bool
+    {
+        return $this->defaultImage;
+    }
+
+    public function setDefaultImage(?bool $defaultImage): self
+    {
+        $this->defaultImage = $defaultImage;
 
         return $this;
     }

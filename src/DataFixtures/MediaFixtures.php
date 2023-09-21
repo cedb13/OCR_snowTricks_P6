@@ -16,9 +16,9 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
         $tricks = $manager->getRepository(Trick::class)->findAll();//findAll trick objet, je récupère tous les objets tricks de ma base de donnée
         $medias = [
             [
-                "title" => "World Championship Colorado", 
-                "link" => "/images/tricks/LetItRide_CraigKelly_WorldChampionshipColorado_1990cJonFoster_Red_Bull_Content_Pool-620.jpg", 
-                "type" =>  "image", 
+                "title" => "Decomposition Front flip", 
+                "link" => "/images/tricks/deconposition-FrontFlip-snowboard.jpg", 
+                "type" =>  "image",
             ],
             [
                 "title" => "Friedl Frontside", 
@@ -26,9 +26,9 @@ class MediaFixtures extends Fixture implements DependentFixtureInterface
                 "type" =>  "image",
             ],
             [
-                "title" => "Decomposition Front flip", 
-                "link" => "/images/tricks/deconposition-FrontFlip-snowboard.jpg", 
-                "type" =>  "image",
+                "title" => "World Championship Colorado", 
+                "link" => "/images/tricks/LetItRide_CraigKelly_WorldChampionshipColorado_1990cJonFoster_Red_Bull_Content_Pool-620.jpg", 
+                "type" =>  "image", 
             ]
 
         ];

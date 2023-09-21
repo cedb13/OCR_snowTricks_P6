@@ -1,23 +1,59 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Well Come in Snowtrick community!{% endblock %}
 
 {% block body %}
 <header class="masthead">
 <style>
+    .button-link {
+        border: 3px solid #3CC;
+        margin: 5% auto;
+        height: 50px;
+        width: 20%;
+        background-color: #444;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+    }
+    .gd {
+        display: grid;
+        align-items: center;
+    }
     .masthead { 
         background-image: url('/images/tricks/home.jpg'); 
         background-repeat: no-repeat; 
         background-size: 100%; 
         background-position:center center; 
         padding: 50px; 
-        }
+    }
     .arrow-down {
-            float:right; 
-            padding-top:20px; 
-            margin-right: -40px; 
-            font-size: 30px;
-        }
+        float:right; 
+        padding-top:20px; 
+        margin-right: -40px; 
+        font-size: 30px;
+    }
+    .fig-gallery {
+        justify-content: space-between; 
+        border: 3px solid #3CC; 
+        display: flex; 
+        flex-wrap: wrap;
+    }
+    .gallery-item {
+        width: 300px;
+        margin: 10px;
+    }
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+    .a-title{
+        color: grey; 
+        text-decoration:none;
+    }
+    .dspN {
+        display : none;
+    }
     @media (min-width: 576px) {
         .masthead { 
             background-image: url('/images/tricks/home.jpg'); 
@@ -31,6 +67,8 @@
             padding-top:50px; 
             margin-right: -140px; 
             font-size: 30px;
+        }
+        .gallery {
         }
     }
     @media (min-width: 992px) {
@@ -47,14 +85,18 @@
             margin-right: -240px; 
             font-size: 30px;
         }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
     }
 </style>
       <div class="container position-relative px-4 px-lg-5">
           <div class="row gx-4 gx-lg-5 justify-content-center">
               <div class="col-md-10 col-lg-8 col-xl-7">
                   <div class="site-heading example-wrapper">
-                      <h1 style="color: white">Hello {{ controller_name }}! ✅</h1>
-                      <span class="subheading">This friendly message is coming from:</span>
+                      <h1 style="color: white; text-align: center; text-shadow: black 0.1em 0.1em 0.2em">Hello {{ home_user }}! ✅</h1>
+                      <span class="subheading" style="text-shadow: white 0.1em 0.1em 0.2em"><B>Well Come in Snowtrick community!</B></span>
                   </div>
               </div>
           </div>
@@ -64,53 +106,29 @@
         <span style="display:none">To down</span>
      </a>
   </header>
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-<div class="example-wrapper">
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/OCR_snowTricks_P6/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/OCR_snowTricks_P6/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
-<h1>Liste des tricks</h1>
-    <style>
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-        }
+<h1 class="container-sm" style="width: 300px; margin: 60px; text-align: center;">Tricks List</h1>
 
-        .gallery-item {
-            width: 300px;
-            margin: 10px;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-    <div class="gallery">
+    
+    <div class="gallery" style="margin: 50px">
+    {% for trick in tricks %}
             <div class="gallery-item container-sm">
-                <a href="#"><img src="/images/tricks/home.jpg" alt="default-trick"></a>
-                <br><br>
-                <figcaption class="gallery" style="justify-content: space-between; border: solid;">
-                    <h3 style="margin: 4px">Title-1</h3>
+                <a href="../trick/{{trick.slug}}"><img src="{{trick.medias.first.link}}" alt="default-trick"></a>
+                <br>
+                <figcaption class="fig-gallery">
+                    <h3 style="margin: 4px;"><a href="../trick/{{trick.slug}}" class="a-title">{{trick.name}}</a></h3>
                     <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px"></i></a>
                     <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
                 </figcaption>
             </div>
-            <div class="gallery-item container-sm">
-                <a href="#"><img src="/images/tricks/accessoires-snowboard.jpg" alt="default-trick"></a>
-                <br><br>
-                <figcaption class="gallery" style="justify-content: space-between; border: solid;">
-                    <h3 style="margin: 4px">Title-2</h3>
-                    <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px"></i></a>
-                    <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
-                </figcaption>
-            </div>
+            <br>
+     {% endfor %}     
     </div>
+    
+    <br><br />
+    <div>
+        <a href="home/loadMore" class="button-link gd {{dsp}}">Load More</a>
+    </div>
+
 
     <br><br />
         <a href="#" title="To top page" id="bottom-page">

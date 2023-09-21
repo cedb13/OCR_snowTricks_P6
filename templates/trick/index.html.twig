@@ -1,20 +1,245 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello TrickController!{% endblock %}
+{% block title %}Well Come in {{trick.name}} Snowtrick!{% endblock %}
 
 {% block body %}
+<header class="masthead">
+<style>
+    .button-link {
+        border: 3px solid #3CC;
+        margin: 5% auto;
+        height: 50px;
+        width: 20%;
+        background-color: #444;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+    }
+    .gd {
+        display: grid;
+        align-items: center;
+    }
+    .masthead { 
+        background-image: url({{trick.medias.first.link}}); 
+        background-repeat: no-repeat; 
+        background-size: 100%; 
+        background-position:center center; 
+        padding: 50px; 
+    }
+    .arrow-down {
+        float:right; 
+        padding-top:20px; 
+        margin-right: -40px; 
+        font-size: 30px;
+    }
+    .fig-gallery {
+        justify-content: center; 
+        border: 3px solid #3CC; 
+        display: flex; 
+        flex-wrap: wrap;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+     .comment-gallery {
+        display: flex; 
+        flex-wrap: nowrap;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .comment{
+        border: 3px solid #3CC;
+        margin: 5px;
+        padding: 5px;
+    }
+    .user-comment{
+        margin-left: auto; 
+        margin-right: auto; 
+        width: 300px; 
+    }
+    .gallery-item {
+        width: 300px;
+        margin: 10px;
+    }
+    .gallery-item img {
+        width: 100%;
+        height: 100%;
+        display: flex;
+    }
+    .a-title{
+        color: grey; 
+        text-decoration:none;
+    }
+    .btn-medias{
+        text-align: center;
+        margin-top: 32px;
+    }
+    .dspDate{
+        display: none; 
+    }
+    @media (min-width: 250px) {
+
+                .dspNone {
+                    display: none;
+                }
+    }
+    @media (min-width: 576px) {
+        .masthead { 
+            background-image: url({{trick.medias.first.link}}); 
+            background-repeat: no-repeat; 
+            background-size: 100%; 
+            background-position:center center; 
+            padding: 150px;
+            }
+        .arrow-down {
+            float:right; 
+            padding-top:50px; 
+            margin-right: -140px; 
+            font-size: 30px;
+        }
+        .dspNone {
+            display: none;
+        }
+    }
+    @media (min-width: 992px) {
+        .masthead { 
+            background-image: url({{trick.medias.first.link}}); 
+            background-repeat: no-repeat; 
+            background-size: cover; 
+            background-position:center center; 
+            padding: 300px;
+            }
+        .arrow-down {
+            float:right; 
+            padding-top:250px; 
+            margin-right: -240px; 
+            font-size: 30px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .dispN {
+            display: none;
+        }
+        .dspNone {
+            display: contents;
+        }
+    }
+</style>
+      <div class="container position-relative px-4 px-lg-5">
+          <div class="row gx-4 gx-lg-5 justify-content-center">
+              <div class="col-md-10 col-lg-8 col-xl-7">
+                  <div class="site-heading example-wrapper">
+                      <h1 style="color: white; text-align: center; text-shadow: black 0.1em 0.1em 0.2em">Well Come in {{trick.name}} Snowtrick !</h1>
+                      <span class="subheading" style="text-shadow: white 0.1em 0.1em 0.2em"><B>Well Come in Snowtrick community!</B></span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <a href="#bottom-page" title="To down page">
+        <i class="fa-solid fa-arrow-down arrow-down"></i>
+        <span style="display:none">To down</span>
+     </a>
+</header>
 <style>
     .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
+    <div class="btn-medias dispN">
+        <button type="button" class=" btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalForm" >
+            SEE MEDIAS
+        </button>
+            <div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body bg-dark">
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <div class="myform bg-dark">
+                                <h3 class="container-sm" style="width: 50%; text-align: center; color: #ffff">Our Medias for {{trick.name}} </h3>
+                                <div class="gallery" style="margin: 50px">
+                                    {% for media in trick.medias %}
+                                        <div class="gallery-item container-sm">
+                                            <a href="{{media.link}}" target="_blank"><img src="{{media.link}}" alt="default-trick"></a>
+                                            <br>
+                                            <figcaption class="fig-gallery">
+                                                <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px"></i></a>
+                                                <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
+                                            </figcaption>
+                                        </div>
+                                        <br>
+                                    {% endfor %}     
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="dspNone">
+        <h3 class="container-sm" style="width: 50%; text-align: center; margin-top: 32px;">Our Medias for {{trick.name}} </h3>
+            <div class="gallery" style="margin: 50px">
+                {% for media in trick.medias %}
+                    <div class="gallery-item container-sm">
+                        <a href="{{media.link}}" target="_blank"><img src="{{media.link}}" alt="default-trick"></a>
+                        <br>
+                        <figcaption class="fig-gallery">
+                            <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px"></i></a>
+                            <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
+                        </figcaption>
+                    </div>
+                    <br>
+                {% endfor %}     
+            </div>
+    </div>
+    <br><br />
+    <div>
+    <h3 class="container-sm" style="width: 100%; text-align: center; margin-top: 32px;">What is {{trick.name}}:</h3>
+        <div style="width: 50%; margin-left: auto; margin-right: auto;"><p>{{trick.content}}</p></div>
+    </div>
+    <br><br />
+    <div class="gallery" style="margin: 50px">
+        <div class="gallery-item container-sm">
+            <div class="fig-gallery">
+                <p><center><strong>Creation date:</strong> {{trick.createdAt|date("m/d/Y")}}</center></p>
+            </div>
+        </div>
+        <div class="gallery-item container-sm">
+            <div class="fig-gallery">
+                <p><center><strong>Trick Group:</strong> {{trick.category}}</center></p>
+            </div>
+        </div>
+        <div class="gallery-item container-sm {{dspDate}}">
+            <div class="fig-gallery">
+                 <p><center><strong>Creation date:</strong> {{trick.updatedAt|date("m/d/Y")}}</center></p>
+            </div>
+        </div>
+    </div>
+    <br><br />
+    <div>
+    <h3 class="container-sm" style="width: 100%; text-align: center; margin-top: 32px;">Comment {{trick.name}}:</h3>
+    </div>
+    <br><br />
+    <div class="user-comment">
+        <div class="gallery-item container-sm">
+            <div class="comment-gallery">
+                <img src="../images/avatars/avatar-userName1.png" class="avatar" alt="user" style= "width: 25%; border-radius: 100%;">
+                <b class="comment"><p><center>blablabla, blablabla!</center></p></b>
+            </div>
+        </div>
+        <br><br />
+        <div class="gallery-item container-sm">
+            <div class="comment-gallery">
+                <img src="../images/avatars/avatar-userName1.png" class="avatar" alt="user" style= "width: 25%; border-radius: 100%;">
+                <b class="comment"><p><center>blablabla, blablabla! blablabla, blablabla!</center></p></b>
+            </div>
+        </div>
+    </div>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/var/www/html/OCR_snowTricks_P6/src/Controller/TrickController.php'|file_link(0) }}">src/Controller/TrickController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/var/www/html/OCR_snowTricks_P6/templates/trick/index.html.twig'|file_link(0) }}">templates/trick/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <br><br />
+        <a href="#" title="To top page" id="bottom-page">
+            <i class="fa-solid fa-arrow-up" style="float:right; padding-right:40px; font-size: 30px; "></i>
+            <span style="display:none">To top</span>
+        </a>
 {% endblock %}
