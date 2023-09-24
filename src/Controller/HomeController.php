@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 class HomeController extends AbstractController
 {
     private $entityManager;
-    private $limit = 2;
+    private $limit = 6;
     public $dspN;
     
     public function __construct(EntityManagerInterface $entityManager)

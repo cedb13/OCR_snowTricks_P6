@@ -18,14 +18,14 @@ class UserFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $roles[] = 'ROLE_ADMIN';
-        for ($i=1; $i<8; $i++)
+        for ($i=1; $i<11; $i++)
         {
             $user = new User();
 
             $userName = 'userName' . $i;
             $email = $userName.'@exemple.com';
             $password = $this->hasher->hashPassword($user, '@Test123#'. $i);
-            $avatarFile = '/images/avatars/avatar-'.$userName.'png';
+            $avatarFile = '/images/avatars/avatar-'.$userName.'.png';
             
             $user
                 ->setUserName($userName)

@@ -31,6 +31,42 @@ class TrickFixtures extends Fixture implements DependentFixtureInterface
                 "name" => "Front flip", 
                 "category" => "Flips", 
                 "content" =>  "Un flip est une rotation verticale. Les front flips sont des rotations en avant.", 
+            ],
+            [
+                "name" => "Japan air", 
+                "category" => "Old school", 
+                "content" => "saisie de l'avant de la planche, avec la main avant, du côté de la carre frontside",
+            ],
+            [
+                "name" => "stalefish", 
+                "category" => "Grabs", 
+                "content" => "saisie de la carre backside de la planche entre les deux pieds avec la main arrière.",
+            ],  
+            [
+                "name" => "Backside 180", 
+                "category" => "Rotations", 
+                "content" => "Désigne un demi-tour, soit 180 degrés d'angle ou le planchiste a commencé sa rotation dos au landing lorsqu'il a décollé.",
+            ],
+                
+            [
+                "name" => "Method Air", 
+                "category" => "Old school", 
+                "content" => "Passe la main avant derrière ton genou et étends tes jambes de façon à ce que ton corps ait presque la forme de la queue d'un scorpion, puis cherche à atteindre le ciel avec ta main arrière.",
+            ],
+            [
+                "name" => "Mute",
+                "category" => "Grabs", 
+                "content" => "Saisie de la carre frontside de la planche entre les deux pieds avec la main avant.",
+            ],
+            [
+                "name" => "Back flip" , 
+                "category" => "Flips", 
+                "content" => "Un Backflip fait tourner la planche perpendiculairement à la neige, tu fais donc un Flip directement en arrière, en stabilisant la planche lors de l'atterrissage.",
+            ],
+            [
+                "name" => "nose grab" , 
+                "category" => "Grabs", 
+                "content" =>  "Saisie de la partie avant de la planche, avec la main avant.",
             ]
         ];
 

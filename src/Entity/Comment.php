@@ -22,15 +22,13 @@ class Comment
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $createdAt;
 
-    #[ORM\Column(name: 'user_id')]
-    #[ManyToOne(targetEntity: User::class)]
-    #[JoinColumn(name: 'user_id', referencedColumnName: 'id')]
-    private $user;
+    #[ManyToOne(targetEntity: User::class, inversedBy: 'comments')]
+    #[JoinColumn(name: 'user_id')]
+    private User $user;
 
-    #[ORM\Column(name: 'trick_id')]
-    #[ManyToOne(targetEntity: Trick::class)]
-    #[JoinColumn(name: 'trick_id', referencedColumnName: 'id')]
-    private $trick;
+    #[ManyToOne(targetEntity: Trick::class, inversedBy: 'comments')]
+    #[JoinColumn(name: 'trick_id')]
+    private Trick $trick;
 
     public function getId(): ?int
     {

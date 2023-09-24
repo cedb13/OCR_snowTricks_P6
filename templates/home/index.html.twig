@@ -6,7 +6,7 @@
 <header class="masthead">
 <style>
     .button-link {
-        border: 3px solid #3CC;
+       border: 3px solid #3CC;
         margin: 5% auto;
         height: 50px;
         width: 20%;
@@ -24,7 +24,7 @@
         background-repeat: no-repeat; 
         background-size: 100%; 
         background-position:center center; 
-        padding: 50px; 
+        padding: 70px; 
     }
     .arrow-down {
         float:right; 
@@ -33,14 +33,15 @@
         font-size: 30px;
     }
     .fig-gallery {
-        justify-content: space-between; 
+        justify-content: center; 
         border: 3px solid #3CC; 
         display: flex; 
         flex-wrap: wrap;
     }
     .gallery-item {
         width: 300px;
-        margin: 10px;
+        height: 200px;
+        margin: 50px;
     }
     .gallery-item img {
         width: 100%;
@@ -54,23 +55,7 @@
     .dspN {
         display : none;
     }
-    @media (min-width: 576px) {
-        .masthead { 
-            background-image: url('/images/tricks/home.jpg'); 
-            background-repeat: no-repeat; 
-            background-size: 100%; 
-            background-position:center center; 
-            padding: 150px;
-            }
-        .arrow-down {
-            float:right; 
-            padding-top:50px; 
-            margin-right: -140px; 
-            font-size: 30px;
-        }
-        .gallery {
-        }
-    }
+
     @media (min-width: 992px) {
         .masthead { 
             background-image: url('/images/tricks/home.jpg'); 
@@ -95,8 +80,8 @@
           <div class="row gx-4 gx-lg-5 justify-content-center">
               <div class="col-md-10 col-lg-8 col-xl-7">
                   <div class="site-heading example-wrapper">
-                      <h1 style="color: white; text-align: center; text-shadow: black 0.1em 0.1em 0.2em">Hello {{ home_user }}! ✅</h1>
-                      <span class="subheading" style="text-shadow: white 0.1em 0.1em 0.2em"><B>Well Come in Snowtrick community!</B></span>
+                      <h1 style="color: white; text-align: center; text-shadow: black 0.1em 0.1em 0.2em">Hello {{ home_user }}!</h1>
+                      <div style= "text-align: center; text-shadow: white 0.1em 0.1em 0.2em"><span><B>Well Come in Snowtrick community!</B></span></div>
                   </div>
               </div>
           </div>
@@ -106,19 +91,22 @@
         <span style="display:none">To down</span>
      </a>
   </header>
-<h1 class="container-sm" style="width: 300px; margin: 60px; text-align: center;">Tricks List</h1>
+<h1 class="container-sm" style="width: 300px; margin-top: 60px;text-align: center;">Tricks List</h1>
 
     
-    <div class="gallery" style="margin: 50px">
+    <div class="gallery">
     {% for trick in tricks %}
             <div class="gallery-item container-sm">
+                <div class="gallery-item">
                 <a href="../trick/{{trick.slug}}"><img src="{{trick.medias.first.link}}" alt="default-trick"></a>
                 <br>
                 <figcaption class="fig-gallery">
                     <h3 style="margin: 4px;"><a href="../trick/{{trick.slug}}" class="a-title">{{trick.name}}</a></h3>
-                    <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px"></i></a>
+                    <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px 16px"></i></a>
                     <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
                 </figcaption>
+                </div>
+                <br>
             </div>
             <br>
      {% endfor %}     
