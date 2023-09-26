@@ -3,138 +3,44 @@
 {% block title %}Well Come in {{trick.name}} Snowtrick!{% endblock %}
 
 {% block body %}
-<header class="masthead">
+<header class="masthead-trick">
 <style>
-    .button-link {
-        border: 3px solid #3CC;
-        margin: 5% auto;
-        height: 50px;
-        width: 20%;
-        background-color: #444;
-        color: #fff;
-        text-align: center;
-        border-radius: 10px;
-    }
-    .gd {
-        display: grid;
-        align-items: center;
-    }
-    .masthead { 
+   
+    .masthead-trick { 
         background-image: url({{trick.medias.first.link}}); 
         background-repeat: no-repeat; 
         background-size: 100%; 
         background-position:center center; 
         padding: 70px; 
     }
-    .arrow-down {
-        float:right; 
-        padding-top:20px; 
-        margin-right: -40px; 
-        font-size: 30px;
-    }
-    .fig-gallery {
-        justify-content: center; 
-        border: 3px solid #3CC; 
-        display: flex; 
-        flex-wrap: wrap;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-     .comment-gallery {
-        display: flex; 
-        flex-wrap: nowrap;
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    .comment{
-        border: 3px solid #3CC;
-        margin: 5px;
-        padding: 5px;
-    }
-    .user-comment{
-        margin-left: auto; 
-        margin-right: auto; 
-        width: 300px; 
-    }
-    .gallery-item {
+    .gallery-item-trick {
         width: 300px;
         margin: 10px;
     }
-    .gallery-item img {
-        width: 100%;
-        height: 100%;
-        display: flex;
-    }
-    .a-title{
-        color: grey; 
-        text-decoration:none;
-    }
-    .btn-medias{
-        text-align: center;
-        margin-top: 32px;
-    }
-    .dspDate{
-        display: none; 
-    }
-    .example-wrapper { 
-        margin: 1em auto; 
-        *max-width: 800px; 
-        width: 95%; 
-        font: 18px/1.5 sans-serif; 
-    }
-    .example-wrapper code { 
-        background: #F5F5F5; 
-        padding: 2px 6px; 
-    }
-    @media (min-width: 250px) {
-
-                .dspNone {
-                    display: none;
-                }
+    .gallery-comment-trick {
+        width: 300px;
+        margin: 10px;
     }
     @media (min-width: 576px) {
-        .masthead { 
+        .masthead-trick { 
             background-image: url({{trick.medias.first.link}}); 
             background-repeat: no-repeat; 
             background-size: 100%; 
             background-position:center center; 
             padding: 150px;
             }
-        .arrow-down {
-            float:right; 
-            padding-top:50px; 
-            margin-right: -140px; 
-            font-size: 30px;
-        }
-        .dspNone {
-            display: none;
-        }
     }
     @media (min-width: 992px) {
-        .masthead { 
+        .masthead-trick { 
             background-image: url({{trick.medias.first.link}}); 
             background-repeat: no-repeat; 
             background-size: cover; 
             background-position:center center; 
             padding: 300px;
             }
-        .arrow-down {
-            float:right; 
-            padding-top:250px; 
-            margin-right: -240px; 
-            font-size: 30px;
-        }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-        }
-        .dispN {
-            display: none;
-        }
-        .dspNone {
-            display: contents;
+        .gallery-comment-trick {
+            width: 500px;
+            margin: 10px;
         }
     }
 </style>
@@ -166,10 +72,10 @@
                                 <h3 class="container-sm" style="width: 50%; text-align: center; color: #ffff">Our Medias for {{trick.name}} </h3>
                                 <div class="gallery" style="margin: 50px">
                                     {% for media in trick.medias %}
-                                        <div class="gallery-item container-sm">
+                                        <div class="gallery-item-trick container-sm">
                                             <a href="{{media.link}}" target="_blank"><img src="{{media.link}}" alt="default-trick"></a>
                                             <br>
-                                            <figcaption class="fig-gallery">
+                                            <figcaption class="fig-gallery-trick">
                                                 <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px 16px"></i></a>
                                                 <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
                                             </figcaption>
@@ -187,10 +93,10 @@
         <h3 class="container-sm" style="width: 50%; text-align: center; margin-top: 32px;">Our Medias for {{trick.name}} </h3>
             <div class="gallery" style="margin: 50px">
                 {% for media in trick.medias %}
-                    <div class="gallery-item container-sm">
+                    <div class="gallery-item-trick container-sm">
                         <a href="{{media.link}}" target="_blank"><img src="{{media.link}}" alt="default-trick"></a>
                         <br>
-                        <figcaption class="fig-gallery">
+                        <figcaption class="fig-gallery-trick">
                             <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px"></i></a>
                             <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
                         </figcaption>
@@ -205,19 +111,19 @@
         <div style="width: 50%; margin-left: auto; margin-right: auto;"><p>{{trick.content}}</p></div>
     </div>
     <br><br />
-    <div class="gallery" style="margin: 50px">
-        <div class="gallery-item container-sm">
-            <div class="fig-gallery">
+    <div class="gallery" style="margin: 50px; justify-content: center; ">
+        <div class="gallery-item-trick container-sm">
+            <div class="fig-gallery-trick">
                 <p><center><strong>Creation date:</strong> {{trick.createdAt|date("m/d/Y")}}</center></p>
             </div>
         </div>
-        <div class="gallery-item container-sm">
-            <div class="fig-gallery">
+        <div class="gallery-item-trick container-sm">
+            <div class="fig-gallery-trick">
                 <p><center><strong>Trick Group:</strong> {{trick.category}}</center></p>
             </div>
         </div>
-        <div class="gallery-item container-sm {{dspDate}}">
-            <div class="fig-gallery">
+        <div class="gallery-item-trick container-sm {{dspDate}}">
+            <div class="fig-gallery-trick">
                  <p><center><strong>Creation date:</strong> {{trick.updatedAt|date("m/d/Y")}}</center></p>
             </div>
         </div>
@@ -229,12 +135,12 @@
     <br><br />
     <div class="user-comment">
      {% for comment in trick.comments %}
-        <div class="gallery-item container-sm">
+        <div class="gallery-comment-trick container-sm">
             <div class="comment-gallery">
-                <img src="..{{comment.user.userLinkPhoto}}" class="avatar" alt="user" style= "width: 25%; border-radius: 100%;">
+                <img src="..{{comment.user.userLinkPhoto}}" class="avatar" alt="user" class= "avatar">
                 <div class="comment">
-                    <p><center>{{comment.user.userName}}-{{comment.createdAt|date("m/d/Y")}}</center></p>
-                    <p><center>{{comment.content}}</center></p>
+                    <p><center>{{comment.user.userName}} - {{comment.createdAt|date("m/d/Y")}}</center></p>
+                    <p>{{comment.content}}</p>
                 </div>
             </div>
         </div>
