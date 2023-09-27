@@ -9,8 +9,59 @@
     .gallery-item {
         width: 300px;
         height: 200px;
-        margin: 50px;
+        margin: 50px 50px 50px 30px;
     }
+    .pencil {
+        margin: 10px 16px 4px 12px; 
+    }
+    .trash {
+        margin: 10px 4px 4px 4px;
+    }
+    .icon-fig {
+        width: 20px;
+        height: 20px;
+    }
+
+     @media (min-width: 576px) {
+        .gallery-item {
+            width: 200px;
+            height: 100px;
+            margin: 50px 50px 50px 80px;
+        }
+        .typo {
+            font-size: 16px;
+        }
+         .pencil {
+            margin: 4px 16px; 
+        }
+        .trash {
+            margin: 4px;
+        }
+        .icon-fig {
+            width: 20px;
+            height: 20px;
+        }
+     }
+      @media (min-width: 992px) {
+        .gallery-item {
+            width: 200px;
+            height: 100px;
+            margin: 50px 50px 50px 50px;
+        }
+        .typo {
+            font-size: 14px;
+        }
+        .pencil {
+            margin: 4px 16px; 
+        }
+        .trash {
+            margin: 4px;
+        }
+        .icon-fig {
+            width: 14px;
+            height: 14px;
+        }
+     }
 
 
 </style>
@@ -39,9 +90,9 @@
                 <a href="../trick/{{trick.slug}}"><img src="{{trick.medias.first.link}}" alt="default-trick"></a>
                 <br>
                 <figcaption class="fig-gallery">
-                    <h3 style="margin: 4px;"><a href="../trick/{{trick.slug}}" class="a-title">{{trick.name}}</a></h3>
-                    <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px 16px"></i></a>
-                    <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
+                    <h5 style="margin: 4px;" class="typo"><a href="../trick/{{trick.slug}}" class="a-title">{{trick.name}}</a></h5>
+                    <a href="#"><i class="fas fa-pencil fa pencil icon-fig"></i></a>
+                    <a href="#"><i class="fas fa-trash fa trash icon-fig"></i></a>
                 </figcaption>
                 </div>
                 <br>
@@ -49,10 +100,24 @@
             <br>
      {% endfor %}     
     </div>
-    
     <br><br />
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+    function showBox(){
+				location.href="home/loadMore";
+			}
+			$(document).ready(function(){ 
+				$(".load-more").click(function(){
+					$(this).html('<img style="vertical-align: middle;" src="/images/icons/icon-loader.gif"><div style="margin-top: -40px;">Load More</div>').delay(2000).queue(function() {
+						$(this).hide();
+						showBox(); 
+						$(this).dequeue();
+					});        
+				});
+			});
+	</script>
     <div>
-        <a class="button-link gd {{dsp}}" href="home/loadMore">Load More</a>
+        <a type="button" class="load-more button-link gd {{dsp}}">Load More</a>
     </div>
     <br><br />
         <a href="#" title="To top page" id="bottom-page">

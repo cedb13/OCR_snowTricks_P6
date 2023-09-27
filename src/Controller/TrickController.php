@@ -19,13 +19,15 @@ class TrickController extends AbstractController
     #[Route('/trick', name: 'app_trick')]
     public function index(): Response
     {
+        $tricksMenu = $this->entityManager->getRepository(Trick::class)->findAll();
         return $this->render('trick/index.html.twig', [
-            'controller_name' => 'TrickController',
+            'controller_name' => 'TrickController', 'tricksMenu' => $tricksMenu,
         ]);
     }
     #[Route('/trick/{slug}', name: 'app_trick')]
     public function show(string $slug): Response
     {
+        $tricksMenu = $this->entityManager->getRepository(Trick::class)->findAll();
         $trick = $this->entityManager->getRepository(Trick::class)->findOneBy(array('slug'=>$slug));
         if (isset($trick->updatedAt)) 
         {
@@ -35,7 +37,7 @@ class TrickController extends AbstractController
             $dspDate = "dspDate";
         }
         return $this->render('trick/index.html.twig', [
-            'controller_name' => 'TrickController', 'trick' => $trick, 'dspDate' => $dspDate,
+            'controller_name' => 'TrickController', 'trick' => $trick, 'dspDate' => $dspDate, 'tricksMenu' => $tricksMenu,
         ]);
     }
 }

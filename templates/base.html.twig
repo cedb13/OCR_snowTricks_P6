@@ -35,9 +35,9 @@
                                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/home">Home</a></li>
                                 <li class="nav-item dropdown"><a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tricks</a>
                                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                        <li><a class="dropdown-item" href="#">Tricks1</a></li>
-                                        <li><a class="dropdown-item" href="#">Tricks2</a></li>
-                                        <li><a class="dropdown-item" href="#">Tricks3</a></li>
+                                    {% for trickMenu in tricksMenu %}
+                                        <li><a class="dropdown-item" href="../trick/{{trickMenu.slug}}">{{trickMenu.name}}</a></li>
+                                    {% endfor %}
                                     </ul>
                                 </li>
                                 <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/login">Sign in</a></li>
@@ -52,29 +52,6 @@
         </body>
         <br><br />
         <footer>
-        <style>
-
-             @media (min-width: 250px) {
-
-                .dspNone {
-                    display: none;
-                }
-            }
-            @media (min-width: 576px) {
-
-                .dspNone {
-                    display: none;
-                }
-            }
-            @media (min-width: 992px) {
-                .dispN {
-                    display: none;
-                }
-                .dspNone {
-                    display: contents;
-                }
-            }
-        </style>
             {% block footer %}<div class="container dispN" style="margin: 50px">
                 <div class="row">
                     <div class="col-3"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/home"><i class="fa-solid fa-house"></i></a></div>
@@ -83,9 +60,9 @@
                             <i class="fa fa-bookmark" aria-hidden="true"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Tricks1</a></li>
-                            <li><a class="dropdown-item" href="#">Tricks2</a></li>
-                            <li><a class="dropdown-item" href="#">Tricks3</a></li>
+                        {% for trickMenu in tricksMenu %}
+                            <li><a class="dropdown-item" href="../trick/{{trickMenu.slug}}">{{trickMenu.name}}</a></li>
+                        {% endfor %}
                         </ul>
                     </div>
                     <div class="col-3"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/login"><i class="fa-solid fa-arrow-right-to-bracket"></i></a></div>
@@ -104,9 +81,9 @@
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/home">Home</a></li>
                             <li class="nav-item dropdown"><a class="nav-link px-lg-3 py-3 py-lg-4 dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Tricks</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Tricks1</a></li>
-                                    <li><a class="dropdown-item" href="#">Tricks2</a></li>
-                                    <li><a class="dropdown-item" href="#">Tricks3</a></li>
+                                {% for trickMenu in tricksMenu %}
+                                    <li><a class="dropdown-item" href="../trick/{{trickMenu.slug}}">{{trickMenu.name}}</a></li>
+                                {% endfor %}
                                 </ul>
                             </li>
                             <li class="nav-item"><a class="nav-link px-lg-3 py-3 py-lg-4" href="/login">Sign in</a></li>

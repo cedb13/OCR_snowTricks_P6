@@ -108,10 +108,10 @@
     <br><br />
     <div>
     <h3 class="container-sm" style="width: 100%; text-align: center; margin-top: 32px;">What is {{trick.name}}:</h3>
-        <div style="width: 50%; margin-left: auto; margin-right: auto;"><p>{{trick.content}}</p></div>
+        <div style="width: 50%; margin-left: auto; margin-right: auto;"><center><p>{{trick.content}}</p><center></div>
     </div>
     <br><br />
-    <div class="gallery" style="margin: 50px; justify-content: center; ">
+    <center><div class="gallery" style="margin: 50px; justify-content: center; ">
         <div class="gallery-item-trick container-sm">
             <div class="fig-gallery-trick">
                 <p><center><strong>Creation date:</strong> {{trick.createdAt|date("m/d/Y")}}</center></p>
@@ -127,7 +127,7 @@
                  <p><center><strong>Creation date:</strong> {{trick.updatedAt|date("m/d/Y")}}</center></p>
             </div>
         </div>
-    </div>
+    </center></div>
     <br><br />
     <div>
     <h3 class="container-sm" style="width: 100%; text-align: center; margin-top: 32px;">Comment {{trick.name}}:</h3>

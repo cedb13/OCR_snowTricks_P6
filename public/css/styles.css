@@ -6,7 +6,7 @@
     border: 3px solid #3CC;
     margin: 5% auto;
     height: 50px;
-    width: 20%;
+    width: 40%;
     background-color: #444;
     color: #fff;
     text-align: center;
@@ -91,16 +91,6 @@
 .dspN {
     display : none;
 }
-.box {
-    display: grid;
-    width: 280px;
-    grid-template-columns: 80px 80px 80px;
-    align-items: start;
-    justify-content: center; 
-}
-.box :first-child {
-    align-self: center;
-}
 .example-wrapper { 
     margin: 1em auto; 
     max-width: 800px; 
@@ -117,6 +107,16 @@
             }
 }
 @media (min-width: 576px) {
+    .button-link {
+        border: 3px solid #3CC;
+        margin: 10% 40% auto;
+        height: 50px;
+        width: 30%;
+        background-color: #444;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+    }
     .arrow-down {
         float:right; 
         padding-top:50px; 
@@ -126,8 +126,22 @@
     .dspNone {
         display: none;
     }
+    .gallery {
+        display: flex;
+        flex-wrap: wrap;
+    }
 }
 @media (min-width: 992px) {
+    .button-link {
+        border: 3px solid #3CC;
+        margin: 5% auto;
+        height: 50px;
+        width: 20%;
+        background-color: #444;
+        color: #fff;
+        text-align: center;
+        border-radius: 10px;
+    }
     .masthead { 
         background-image: url('/images/tricks/home.jpg'); 
         background-repeat: no-repeat; 

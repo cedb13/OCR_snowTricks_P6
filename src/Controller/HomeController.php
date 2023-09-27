@@ -23,17 +23,20 @@ class HomeController extends AbstractController
     {
         $dsp = $this->dspN = "";
         $tricks = $this->entityManager->getRepository(Trick::class)->findBy(array(), null, $this->limit);
+        $tricksMenu = $this->entityManager->getRepository(Trick::class)->findAll();
         return $this->render('home/index.html.twig', [
-            'home_user' => 'My friend', 'tricks' => $tricks, 'dsp' => $dsp,
+            'home_user' => 'My friend', 'tricks' => $tricks, 'dsp' => $dsp, 'tricksMenu' => $tricksMenu,
         ]);
     }
     #[Route('/home/loadMore', name: 'app_home_loadMore')]
     public function loadMore(): Response
     {
+
         $dsp = $this->dspN = "dspN";
         $tricks = $this->entityManager->getRepository(Trick::class)->findAll();
+        $tricksMenu = $tricks;
         return $this->render('home/index.html.twig', [
-            'home_user' => 'My friend', 'tricks' => $tricks, 'dsp' => $dsp,
+            'home_user' => 'My friend', 'tricks' => $tricks, 'dsp' => $dsp, 'tricksMenu' => $tricksMenu,
         ]);
     }
 }
