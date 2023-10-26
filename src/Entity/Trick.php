@@ -159,4 +159,36 @@ class Trick
     {
         return $this->comments;
     }
+
+    public function getMediaType(): string
+    {
+        foreach($this->getMedias() as $media)
+        {
+                return $media->getType();
+        }
+    }
+    public function getDefaultImage(): string
+    {
+        foreach($this->getMedias() as $media)
+        {
+            return $media->getDefaultImage();
+        }
+    }
+    public function getDefaultImageLink(): string
+    {
+        $link = "";
+
+        foreach($this->getMedias() as $media)
+        {
+            if($media->getDefaultImage()=="1")
+            {
+                $link = $media->getLink();
+            }
+            else
+            {
+                $link = $this->getMedias()->first()->getLink();
+            }
+        }
+        return $link;
+    }
 }

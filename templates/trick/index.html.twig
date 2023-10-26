@@ -3,154 +3,143 @@
 {% block title %}Well Come in {{trick.name}} Snowtrick!{% endblock %}
 
 {% block body %}
-<header class="masthead-trick">
-<style>
-   
-    .masthead-trick { 
-        background-image: url({{trick.medias.first.link}}); 
-        background-repeat: no-repeat; 
-        background-size: 100%; 
-        background-position:center center; 
-        padding: 70px; 
-    }
-    .gallery-item-trick {
-        width: 300px;
-        margin: 10px;
-    }
-    .gallery-comment-trick {
-        width: 300px;
-        margin: 10px;
-    }
-    @media (min-width: 576px) {
-        .masthead-trick { 
-            background-image: url({{trick.medias.first.link}}); 
-            background-repeat: no-repeat; 
-            background-size: 100%; 
-            background-position:center center; 
-            padding: 150px;
-            }
-    }
-    @media (min-width: 992px) {
-        .masthead-trick { 
-            background-image: url({{trick.medias.first.link}}); 
-            background-repeat: no-repeat; 
-            background-size: cover; 
-            background-position:center center; 
-            padding: 300px;
-            }
-        .gallery-comment-trick {
-            width: 500px;
-            margin: 10px;
-        }
-    }
-</style>
-      <div class="container position-relative px-4 px-lg-5">
-          <div class="row gx-4 gx-lg-5 justify-content-center">
-              <div class="col-md-10 col-lg-8 col-xl-7">
-                  <div class="site-heading example-wrapper">
-                      <h1 style="color: white; text-align: center; text-shadow: black 0.1em 0.1em 0.2em">Well Come in {{trick.name}} Snowtrick !</h1>
-                  </div>
-              </div>
-          </div>
-      </div>
-      <a href="#bottom-page" title="To down page">
-        <i class="fa-solid fa-arrow-down arrow-down"></i>
-        <span style="display:none">To down</span>
-     </a>
-</header>
-
-    <div class="btn-medias dispN">
-        <button type="button" class=" btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalForm" >
-            SEE MEDIAS
-        </button>
-            <div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-body bg-dark">
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                            <div class="myform bg-dark">
-                                <h3 class="container-sm" style="width: 50%; text-align: center; color: #ffff">Our Medias for {{trick.name}} </h3>
-                                <div class="gallery" style="margin: 50px">
-                                    {% for media in trick.medias %}
-                                        <div class="gallery-item-trick container-sm">
-                                            <a href="{{media.link}}" target="_blank"><img src="{{media.link}}" alt="default-trick"></a>
+<header class="masthead-child">
+    <div class="backgroung-content-color">
+        <div>
+            <img  class="masthead-trick" src="{{defaultImageLink}}" >
+            <div class="fig-gallery-trick-background-image">
+                <a href="#"><i class="fas fa-pencil fa pencil" style="margin: 4px 16px"></i></a>
+                <a href="#"><i class="fas fa-trash fa trash" style="margin: 4px;"></i></a>
+            </div>
+            <div class="container position-relative px-4 px-lg-5">
+                <div class="row gx-4 gx-lg-5 justify-content-center">
+                    <div class="col-md-10 col-lg-8 col-xl-7">
+                        <div class="site-heading example-wrapper masthead-cover-trick">
+                            <h1 style="color: white; text-align: center; text-shadow: black 0.1em 0.1em 0.2em;">Well Come in {{trick.name}} Snowtrick !</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="btn-medias dispN">
+            <button type="button" class=" btn" style="background-color: #3CC; color: #fff" data-bs-toggle="modal" data-bs-target="#ModalForm" >
+                SEE MEDIAS
+            </button>
+                <div class="modal fade" id="ModalForm" tabindex="-1" aria-labelledby="ModalFormLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-body bg-dark">
+                                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                                <div class="myform bg-dark">
+                                    <h3 class="container-sm" style="width: 50%; text-align: center; color: #ffff">Our Medias for {{trick.name}} </h3>
+                                    <div class="gallery" style="margin: 50px">
+                                        {% for media in trick.medias %}
+                                            {% if media.type == 'image' %}
+                                            <div class="gallery-item-trick container-sm">
+                                                <a href="{{media.link}}" target="_blank"><img src="{{media.link}}" alt="default-trick"></a>
+                                                <br>
+                                                <figcaption class="fig-gallery">
+                                                    <a href="#"><i class="fas fa-pencil fa pencil" style="margin: 4px 16px"></i></a>
+                                                    <a href="#"><i class="fas fa-trash fa trash" style="margin: 4px;"></i></a>
+                                                </figcaption>
+                                            </div>
                                             <br>
-                                            <figcaption class="fig-gallery-trick">
-                                                <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px 16px"></i></a>
-                                                <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
-                                            </figcaption>
-                                        </div>
-                                        <br>
-                                    {% endfor %}     
+                                            {% endif %}
+                                        {% endfor %}  
+                                        {% for media in trick.medias %}
+                                            {% if media.type == 'video' %}
+                                            <div class="gallery-item-trick container-sm">
+                                                <iframe src="{{media.link}}" title="{{media.title}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                <br>
+                                                <figcaption class="fig-gallery">
+                                                    <a href="#"><i class="fas fa-pencil fa pencil" style="margin: 4px 16px"></i></a>
+                                                    <a href="#"><i class="fas fa-trash fa trash" style="margin: 4px;"></i></a>
+                                                </figcaption>
+                                            </div>
+                                            <br>
+                                            {% endif %}
+                                        {% endfor %}     
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-    </div>
-    <div class="dspNone">
-        <h3 class="container-sm" style="width: 50%; text-align: center; margin-top: 32px;">Our Medias for {{trick.name}} </h3>
-            <div class="gallery" style="margin: 50px">
+        </div>
+        <div class="dspNone">
+            <h3 class="container-sm" style="width: 400px; margin-top: 60px; text-align: center;">Our Medias for {{trick.name}}</h3>
+                <br>  
+                <div class="gallery-home">
                 {% for media in trick.medias %}
-                    <div class="gallery-item-trick container-sm">
+                    {% if media.type == 'image' %}
+                    <div class="gallery-item-trick">
                         <a href="{{media.link}}" target="_blank"><img src="{{media.link}}" alt="default-trick"></a>
                         <br>
-                        <figcaption class="fig-gallery-trick">
-                            <a href="#"><i class="fas fa-pencil fa-2x" style="margin: 4px"></i></a>
-                            <a href="#"><i class="fas fa-trash fa-2x" style="margin: 4px;"></i></a>
+                        <figcaption class="fig-gallery">
+                            <a href="#"><i class="fas fa-pencil fa pencil" style="margin: 4px 16px"></i></a>
+                            <a href="#"><i class="fas fa-trash fa trash" style="margin: 4px;"></i></a>
                         </figcaption>
                     </div>
                     <br>
-                {% endfor %}     
-            </div>
-    </div>
-    <br><br />
-    <div>
-    <h3 class="container-sm" style="width: 100%; text-align: center; margin-top: 32px;">What is {{trick.name}}:</h3>
-        <div style="width: 50%; margin-left: auto; margin-right: auto;"><center><p>{{trick.content}}</p><center></div>
-    </div>
-    <br><br />
-    <center><div class="gallery" style="margin: 50px; justify-content: center; ">
-        <div class="gallery-item-trick container-sm">
-            <div class="fig-gallery-trick">
-                <p><center><strong>Creation date:</strong> {{trick.createdAt|date("m/d/Y")}}</center></p>
-            </div>
-        </div>
-        <div class="gallery-item-trick container-sm">
-            <div class="fig-gallery-trick">
-                <p><center><strong>Trick Group:</strong> {{trick.category}}</center></p>
-            </div>
-        </div>
-        <div class="gallery-item-trick container-sm {{dspDate}}">
-            <div class="fig-gallery-trick">
-                 <p><center><strong>Creation date:</strong> {{trick.updatedAt|date("m/d/Y")}}</center></p>
-            </div>
-        </div>
-    </center></div>
-    <br><br />
-    <div>
-    <h3 class="container-sm" style="width: 100%; text-align: center; margin-top: 32px;">Comment {{trick.name}}:</h3>
-    </div>
-    <br><br />
-    <div class="user-comment">
-     {% for comment in trick.comments %}
-        <div class="gallery-comment-trick container-sm">
-            <div class="comment-gallery">
-                <img src="..{{comment.user.userLinkPhoto}}" class="avatar" alt="user" class= "avatar">
-                <div class="comment">
-                    <p><center>{{comment.user.userName}} - {{comment.createdAt|date("m/d/Y")}}</center></p>
-                    <p>{{comment.content}}</p>
+                    {% endif %}
+                {% endfor %}
+                {% for media in trick.medias %}
+                    {% if media.type == 'video' %}
+                    <div class="gallery-item-trick">
+                        <iframe src="{{media.link}}" title="{{media.title}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <br>
+                        <figcaption class="fig-gallery">
+                            <a href="#"><i class="fas fa-pencil fa pencil" style="margin: 4px 16px"></i></a>
+                            <a href="#"><i class="fas fa-trash fa trash" style="margin: 4px;"></i></a>
+                        </figcaption>
+                    </div>
+                    <br>
+                    {% endif %}
+                {% endfor %}          
                 </div>
-            </div>
         </div>
         <br><br />
-     {% endfor %}
+        <div>
+        <h3 class="container-sm" style="width: 100%; text-align: center; margin-top: 32px;">What is {{trick.name}}:</h3>
+            <div style="width: 50%; margin-left: auto; margin-right: auto;"><center><p>{{trick.content}}</p><center></div>
+        </div>
+        <br><br />
+        <center><div class="container"><div class="d-flex flex-row m-2">
+            <div class="gallery-item-trick-info p-2">
+                <div class="fig-gallery-trick">
+                    <p><center><strong>Creation date:</strong> {{trick.createdAt|date("m/d/Y")}}</center></p>
+                </div>
+            </div>
+            <div class="gallery-item-trick-info p-2">
+                <div class="fig-gallery-trick">
+                    <p><center><strong>Trick Group:</strong> {{trick.category}}</center></p>
+                </div>
+            </div>
+            <div class="gallery-item-trick-info p-2 {{dspDate}}">
+                <div class="fig-gallery-trick">
+                    <p><center><strong>Date of last update:</strong> {{trick.updatedAt|date("m/d/Y")}}</center></p>
+                </div>
+            </div>
+        </div><div class="container"></center>
+        <br><br />
+        <div>
+        <h3 class="container-sm" style="width: 100%; text-align: center; margin-top: 32px;">Comment {{trick.name}}:</h3>
+        </div>
+        <br><br />
+        <div class="user-comment">
+        {% for comment in trick.comments %}
+            <div class="gallery-comment-trick container-sm">
+                <div class="comment-gallery">
+                    <img src="..{{comment.user.userLinkPhoto}}" class="avatar" alt="user" class= "avatar">
+                    <div class="comment">
+                        <p><center>{{comment.user.userName}} - {{comment.createdAt|date("m/d/Y")}}</center></p>
+                        <p>{{comment.content}}</p>
+                    </div>
+                </div>
+            </div>
+            <br><br />
+        {% endfor %}
+        </div>
     </div>
-
-    <br><br />
-        <a href="#" title="To top page" id="bottom-page">
-            <i class="fa-solid fa-arrow-up" style="float:right; padding-right:40px; font-size: 30px; "></i>
-            <span style="display:none">To top</span>
-        </a>
+</header>
 {% endblock %}

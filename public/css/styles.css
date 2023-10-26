@@ -7,7 +7,7 @@
     margin: 5% auto;
     height: 50px;
     width: 40%;
-    background-color: #444;
+    background-color: #3CC;
     color: #fff;
     text-align: center;
     border-radius: 10px;
@@ -23,22 +23,42 @@
     background-position:center center; 
     padding: 70px;
 }
+.masthead-trick {
+    width: 100%;
+    height: 80%;
+}
+.masthead-cover-trick {
+    text-align: center;
+    display: block;
+    position: absolute;
+    right: 16px;
+    top: -150px;
+}
 .arrow-down {
     float:right; 
-    padding-top:20px; 
+    margin-top:-40px; 
     margin-right: -40px; 
     font-size: 30px;
 }
 .fig-gallery-trick {
-    justify-content: center; 
-    border: 3px solid #3CC; 
-    display: flex; 
-    flex-wrap: wrap;
+    background-color: #3CC;
     width: 100%;
+    height: 55%;
     margin-left: auto;
     margin-right: auto;
 }
+.fig-gallery-trick-background-image {
+    text-align: center;
+    background-color: #3CC;
+    border: 3px solid #3CC; 
+    display: block;
+    position: absolute;
+    right: 15px;
+    top: 20px;
+    padding: 5px 15px 5px 0px;
+}
 .fig-gallery {
+    background-color: #3CC;
     justify-content: center; 
     border: 3px solid #3CC; 
     display: flex; 
@@ -63,9 +83,33 @@
     margin-right: auto; 
     width: 300px; 
 }
+.gallery-item {
+    width: 300px;
+    height: 200px;
+    margin: 50px 50px 50px 50px;
+}
+.gallery-item-trick {
+    width: 300px;
+    height: 200px;
+    margin: 50px 50px 50px 30px;
+    }
+.gallery-comment-trick {
+    width: 300px;
+    margin: 10px;
+}
+.gallery-item-trick-info {
+    width: 250px;
+    height: 150px;
+    margin: auto;
+}
 .gallery-item-trick img {
     width: 100%;
-    height: 100%;
+    height: 80%;
+    display: flex;
+}
+.gallery-item-trick iframe {
+    width: 100%;
+    height: 80%;
     display: flex;
 }
 .gallery-item img {
@@ -73,6 +117,18 @@
     height: 100%;
     display: flex;
 }
+.icon-fig {
+    width: 20px;
+    height: 20px;
+}
+.pencil {
+    margin: 10px 16px 4px 12px;
+    font-size: 20px;
+}
+.trash {
+    margin: 10px 4px 4px 4px;
+    font-size: 20px;
+    }
 .avatar {
     width: 25%; 
     border-radius: 100%;
@@ -92,7 +148,7 @@
     display : none;
 }
 .example-wrapper { 
-    margin: 1em auto; 
+    margin:  auto; 
     max-width: 800px; 
     width: 95%; 
     font: 18px/1.5 sans-serif; 
@@ -101,46 +157,144 @@
     background: #F5F5F5; 
     padding: 2px 6px; 
 }
-@media (min-width: 250px) {
-            .dspNone {
-                display: none;
-            }
+.dspNone {
+    display: none;
+}
+@media (min-width: 360px) {
+    .arrow-down {
+        float:right;
+        margin-top: 0px; 
+        padding-top:0px; 
+        margin-right: -40px; 
+        font-size: 30px;
+    }
+    .gallery-item {
+        width: 300px;
+        height: 200px;
+        margin: 50px 50px 50px 60px;
+    }
+
+}
+@media (min-width: 390px) {
+    .gallery-item {
+        width: 300px;
+        height: 200px;
+        margin: 50px 50px 50px 80px;
+    }
 }
 @media (min-width: 576px) {
+    .gallery-item {
+        width: 200px;
+        height: 100px;
+        margin: 50px 50px 50px 100px;
+    }
+    .gallery-item-trick {
+        width: 300px;
+        height: 200px;
+        margin: 50px 50px 50px 30px;
+    }
+    .gallery-item-trick-info {
+        width: 300px;
+        height: 200px;
+        margin: auto;
+    }
+    .gallery-home {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .typo {
+        font-size: 16px;
+    }
+     .pencil {
+        margin: 4px 16px; 
+    }
+    .trash {
+        margin: 4px;
+    }
+    .icon-fig {
+        width: 20px;
+        height: 20px;
+    }
     .button-link {
-        border: 3px solid #3CC;
         margin: 10% 40% auto;
-        height: 50px;
         width: 30%;
-        background-color: #444;
-        color: #fff;
+    }
+    .fig-gallery-trick {
+        height: 30%;
+    }
+    .fig-gallery-trick-background-image {
+        right: 16px;
+        top: 30px;
+    }
+    .masthead-cover-trick {
+        align-items: center;
         text-align: center;
-        border-radius: 10px;
+        display: block;
+        position: absolute;
+        right: 16px;
+        top: -200px;
     }
     .arrow-down {
         float:right; 
-        padding-top:50px; 
-        margin-right: -140px; 
+        padding-top:30px; 
+        margin-right: -40px; 
         font-size: 30px;
-    }
-    .dspNone {
-        display: none;
-    }
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
     }
 }
 @media (min-width: 992px) {
+
+    .gallery { 
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .gallery-home {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: left;
+    }
+    .gallery-item {
+        width: 250px;
+        height: 150px;
+        margin: 50px 50px 50px 80px;
+    }
+    .gallery-item-trick {
+        width: 350px;
+        height: 280px;
+        margin: 50px 50px 50px 20px;
+    }
+    .gallery-item-trick-info {
+        width: 300px;
+        height: 200px;
+        margin: auto;
+    }
+    .gallery-comment-trick {
+        width: 500px;
+        margin: 10px;
+    }
+    .typo {
+        font-size: 16px;
+    }
+    .pencil {
+        margin: 4px 16px; 
+    }
+    .trash {
+        margin: 4px;
+    }
+    .icon-fig {
+        width: 14px;
+        height: 14px;
+    }
     .button-link {
-        border: 3px solid #3CC;
-        margin: 5% auto;
-        height: 50px;
         width: 20%;
-        background-color: #444;
-        color: #fff;
-        text-align: center;
-        border-radius: 10px;
+    }
+    .backgroung-content-color {
+        background:  rgba(107, 206, 173, 0.1) ;
+        background-repeat: no-repeat; 
+        background-position: top center;
+        width: 90%;
+        margin: 0px 100px;
+        padding-top: 80px;
     }
     .masthead { 
         background-image: url('/images/tricks/home.jpg'); 
@@ -148,16 +302,37 @@
         background-size: cover; 
         background-position:center center; 
         padding: 300px;
-        }
+    }
+    .masthead-child { 
+        background-image: url('/images/tricks/home.jpg'); 
+        background-repeat: no-repeat; 
+        background-size: 100%; 
+        background-position: top center; 
+    }
+    .masthead-trick {
+        width: 90%;
+        height: 550px;
+        margin-left: 6%;
+    }
+    .masthead-cover-trick {
+        text-align: center;
+        display: block;
+        position: absolute;
+        right: 150px;
+        top: -340px;
+    }
+    .fig-gallery-trick {
+        height: 15%;
+    }
+    .fig-gallery-trick-background-image {
+        right: 15%;
+        top: 25%;
+    }
     .arrow-down {
         float:right; 
         padding-top:250px; 
         margin-right: -240px; 
         font-size: 30px;
-    }
-    .gallery {
-        display: flex;
-        flex-wrap: wrap;
     }
     .avatar {
         width: 15%; 
@@ -181,5 +356,17 @@
         display: contents;
     }
 }
-
-
+@media (min-width: 1400px) {
+    .masthead-trick {
+        width: 90%;
+        height: 750px;
+        margin-left: 6%;
+    }
+}
+@media (min-width: 1800px) {
+    .masthead-trick {
+        width: 1500px;
+        height: 850px;
+        margin-left: 6%;
+    }
+}
