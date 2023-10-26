@@ -29,6 +29,7 @@ class TrickController extends AbstractController
     {
         $tricksMenu = $this->entityManager->getRepository(Trick::class)->findAll();
         $trick = $this->entityManager->getRepository(Trick::class)->findOneBy(array('slug'=>$slug));
+        $defaultImageLink = $trick->getDefaultImageLink();
         if (isset($trick->updatedAt)) 
         {
             $dspDate = "";
@@ -37,7 +38,7 @@ class TrickController extends AbstractController
             $dspDate = "dspDate";
         }
         return $this->render('trick/index.html.twig', [
-            'controller_name' => 'TrickController', 'trick' => $trick, 'dspDate' => $dspDate, 'tricksMenu' => $tricksMenu,
+            'controller_name' => 'TrickController', 'trick' => $trick, 'dspDate' => $dspDate, 'tricksMenu' => $tricksMenu, 'defaultImageLink' => $defaultImageLink,
         ]);
     }
 }

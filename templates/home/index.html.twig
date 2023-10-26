@@ -4,67 +4,6 @@
 
 {% block body %}
 <header class="masthead">
-<style>
-
-    .gallery-item {
-        width: 300px;
-        height: 200px;
-        margin: 50px 50px 50px 30px;
-    }
-    .pencil {
-        margin: 10px 16px 4px 12px; 
-    }
-    .trash {
-        margin: 10px 4px 4px 4px;
-    }
-    .icon-fig {
-        width: 20px;
-        height: 20px;
-    }
-
-     @media (min-width: 576px) {
-        .gallery-item {
-            width: 200px;
-            height: 100px;
-            margin: 50px 50px 50px 80px;
-        }
-        .typo {
-            font-size: 16px;
-        }
-         .pencil {
-            margin: 4px 16px; 
-        }
-        .trash {
-            margin: 4px;
-        }
-        .icon-fig {
-            width: 20px;
-            height: 20px;
-        }
-     }
-      @media (min-width: 992px) {
-        .gallery-item {
-            width: 200px;
-            height: 100px;
-            margin: 50px 50px 50px 50px;
-        }
-        .typo {
-            font-size: 14px;
-        }
-        .pencil {
-            margin: 4px 16px; 
-        }
-        .trash {
-            margin: 4px;
-        }
-        .icon-fig {
-            width: 14px;
-            height: 14px;
-        }
-     }
-
-
-</style>
       <div class="container position-relative px-4 px-lg-5">
           <div class="row gx-4 gx-lg-5 justify-content-center">
               <div class="col-md-10 col-lg-8 col-xl-7">
@@ -79,25 +18,24 @@
         <i class="fa-solid fa-arrow-down arrow-down"></i>
         <span style="display:none">To down</span>
      </a>
-  </header>
-<h1 class="container-sm" style="width: 300px; margin-top: 60px;text-align: center;">Tricks List</h1>
-
-    
-    <div class="gallery">
+</header>
+<h1 class="container-sm" style="width: 300px; margin-top: 60px;text-align: center;">Tricks List</h1>  
+    <div class="gallery-home ">
     {% for trick in tricks %}
-            <div class="gallery-item container-sm">
-                <div class="gallery-item">
-                <a href="../trick/{{trick.slug}}"><img src="{{trick.medias.first.link}}" alt="default-trick"></a>
-                <br>
-                <figcaption class="fig-gallery">
-                    <h5 style="margin: 4px;" class="typo"><a href="../trick/{{trick.slug}}" class="a-title">{{trick.name}}</a></h5>
-                    <a href="#"><i class="fas fa-pencil fa pencil icon-fig"></i></a>
-                    <a href="#"><i class="fas fa-trash fa trash icon-fig"></i></a>
-                </figcaption>
-                </div>
-                <br>
-            </div>
+        <div class="gallery-item">
+            <a href="../trick/{{trick.slug}}">
+                {% if trick.getMediaType == 'image' %}
+                        <img src="{{trick.getDefaultImageLink}}" alt="default-trick">
+                {% endif %}
+            </a>
             <br>
+            <figcaption class="fig-gallery">
+                <h5 style="margin: 4px;" class="typo"><a href="../trick/{{trick.slug}}" class="a-title">{{trick.name}}</a></h5>
+                <a href="#"><i class="fas fa-pencil fa pencil icon-fig"></i></a>
+                <a href="#"><i class="fas fa-trash fa trash icon-fig"></i></a>
+            </figcaption>
+        </div>
+        <br>
      {% endfor %}     
     </div>
     <br><br />
